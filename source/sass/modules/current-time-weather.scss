@@ -1,0 +1,108 @@
+.current-time-weather {
+  background-color: rgba($lavender-blush, 0.8);
+  padding: 0;
+  padding-bottom: 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.current-time-weather__temp {
+  color: $russian-green;
+  font-size: 60px;
+  padding: 10px 20px 10px 20px;
+}
+
+.current-time-weather__item {
+  font-size: 22px;
+  padding: 4px 20px 4px 20px;
+}
+
+.current-time-weather__hourly-title,
+.current-time-weather .current-time-weather__header {
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  font-size: 24px;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 500;
+  background-color: rgba($russian-green, 0.9);
+  display: flex;
+  justify-content: space-between;
+}
+
+.current-time-weather__hourly-title {
+  margin-top: 30px;
+}
+
+.current-time-weather__hourly {
+  display: none;
+}
+
+.current-time-weather__wrapper {
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.current-time-weather__open-hourly {
+  position: absolute;
+  opacity: 0;
+  left: 12px;
+}
+
+.current-time-weather__open-hourly ~ label {
+  display: flex;
+  background-color: rgba($russian-green, 0.3);
+  border: none;
+  position: absolute;
+  font-size: 20px;
+  left: 12px;
+  right: 12px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 16px 10px;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+}
+
+// .current-time-weather__open-hourly ~ label:active {
+//   background-color: rgba($russian-green, 0.5);
+// }
+
+// .current-time-weather__open-hourly:checked ~ .current-time-weather__hourly {
+//   display: block;
+//   margin-top: 0;
+//   margin-left: 12px;
+//   margin-right: 12px;
+//   position: absolute;
+// }
+
+// .current-time-weather__open-hourly:checked  ~ label  {
+//  opacity: 0;
+// }
+
+@media (min-width: $tablet-width) {
+  // .current-time-weather__open-hourly {
+  //   display: none;
+  // }
+
+  .current-time-weather__hourly {
+    display: block;
+  }
+
+  .current-time-weather {
+    // width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .current-time-weather {
+    width: 400px;
+    font-size: 22px;
+  }
+}

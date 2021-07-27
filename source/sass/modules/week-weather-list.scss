@@ -1,0 +1,56 @@
+.week-weather-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  row-gap: 12px;
+}
+
+.week-weather-list__item {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.week-weather-list__date {
+  font-size: 24px;
+  background-color: $melon;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.week-weather-list__temp {
+  font-size: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba($lavender-blush, 0.3);
+  color: rgba($outer-space-crayola, 0.8);
+}
+
+@media (min-width: $tablet-width) {
+  .week-weather-list {
+    margin-top: 0;
+    row-gap: 20px;
+    grid-template-columns: max-content max-content;
+    column-gap: 20px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .week-weather-list {
+    grid-template-columns: max-content max-content max-content;
+  }
+
+  .week-weather-list__temp {
+    font-size: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+  }
+}

@@ -1,0 +1,21 @@
+#map {
+  height: 400px;
+  width: 100%;
+  box-shadow: 0 1px 10px 0 $outer-space-crayola;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+@media (min-width: $tablet-width) {
+  #map {
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  #map{
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+  }
+}
