@@ -1,0 +1,36 @@
+.open-current-weather {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  cursor: pointer;
+  z-index: 1;
+  bottom: 0;
+  transform: translateY(100%);
+}
+
+.open-weather__button {
+  text-transform: uppercase;
+  width: 100%;
+  height: 55px;
+  background-color: rgba($russian-green, 0.3);
+  border: none;
+  font-size: 16px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin: 0;
+  transition: background-color 0.2s;
+
+  &:active {
+    background-color: rgba($russian-green, 0.9);
+  }
+}
+
+.open-weather__button {
+    display: block;
+}
+
+@media (min-width: $tablet-width) {
+  .open-current-weather {
+    display: none;
+  }
+}

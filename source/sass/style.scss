@@ -1,7 +1,9 @@
 @import './variables.scss';
 @import './base.scss';
 @import './modules/map.scss';
+@import './modules/open-current-weather.scss';
+@import './modules/popup-hourly-weather.scss';
 @import './modules/current-time-weather.scss';
 @import './modules/week-weather-list.scss';
-@import './modules/current-time-weather__list.scss';
+@import './modules/hourly-weather-list.scss';
 @import './modules/weather-info.scss';

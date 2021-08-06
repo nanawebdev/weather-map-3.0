@@ -1,0 +1,51 @@
+.popup-hourly-weather {
+    display: none;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    align-items: center;
+    justify-content:center;
+}
+
+.overlay {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(black, 0.3);
+}
+
+.popup-hourly-weather__data {
+    position: relative;
+    z-index: 20;
+    width: 90%;
+    top: 10px;
+    height: 90%;
+    overflow-y: scroll;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+.popup-hourly-weather__wrapper {
+  position: absolute;
+  top: 5px;
+  left: 30px;
+  right: 30px;
+}
+
+.popup-hourly-weather__close-button {
+    position: relative;
+    width: 100%;
+    z-index: 20;
+    top: 5px;
+    font-size: 20px;
+    color: rgba(black, 0.8);
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+}

@@ -1,3 +1,5 @@
+import { addDataInPopup } from './popup.js'
+
 const weatherInfo = document.querySelector('.weather-info')
 const currentTimeWeatherTemp = document.querySelector('.current-time-weather__temp span')
 const currentTimeWeatherWind = document.querySelector('.current-time-weather__wind span')
@@ -5,7 +7,6 @@ const currentTimeWeatherHumidinity = document.querySelector('.current-time-weath
 const currentTimeWeatherFeelsLike = document.querySelector('.current-time-weather__feels-like span')
 const weekWeatherList = document.querySelector('.week-weather-list')
 const currentDate = document.querySelector('.current-time-weather__date')
-const currentTimeWeatherList = document.querySelector('.current-time-weather__hourly')
 
 const currentLatLng = {
     lat: 55.7522,
@@ -43,6 +44,8 @@ fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${currentLatLng.lat}&
         showCurrentWeather(data)
         showWeeklyWeather(data)
         showHourlyWeather(data)
+        addDataInCurrentWeather(data)
+        addDataInPopup(data)
     })
 
 mapPin.on('moveend', (evt) => {
@@ -62,7 +65,11 @@ mapPin.on('moveend', (evt) => {
             }
         })
         .then((data) => {
-          showCurrentWeather(data)
+            showCurrentWeather(data)
+            showWeeklyWeather(data)
+            showHourlyWeather(data)
+            addDataInCurrentWeather(data)
+            addDataInPopup(data)
         })
 })
 
@@ -82,8 +89,9 @@ const showCurrentWeather = (data) => {
 
 const showHourlyWeather = (data) => {
     const hourlyArray = data.hourly
+    console.log(hourlyArray)
     const currentWeatherList = document.createElement('ul')
-    currentWeatherList.classList.add('current-time-weather__list')
+    currentWeatherList.classList.add('hourly-weather-list')
 
     // дата из Daily 
     const date = new Date(data.daily[0].dt * 1000)
@@ -94,7 +102,7 @@ const showHourlyWeather = (data) => {
         const element = hourlyArray[index]
         const sameDate = new Date(element.dt * 1000)
         const sameToday = sameDate.toLocaleDateString()
-   
+
         // Сравниваем дату из Daily с датой из Hourly, чтобы показать почасовой прогноз для конкретно этого дня 
         if (today === sameToday) {
             const currentWeatherItem = document.createElement('li')
@@ -103,8 +111,8 @@ const showHourlyWeather = (data) => {
             const temp = element.temp
             const hourData = new Date(element.dt * 1000)
 
-            hour.classList.add('current-time-weather__hours')
-            hourlyTemp.classList.add('current-time-weather__hourly-temp')
+            hour.classList.add('hourly-weather-list__hours')
+            hourlyTemp.classList.add('hourly-weather-list__hourly-temp')
 
             hourlyTemp.textContent = `${temp.toFixed()}°C`
             hour.textContent = `${hourData.toLocaleTimeString()}`
@@ -114,11 +122,19 @@ const showHourlyWeather = (data) => {
             currentWeatherList.appendChild(currentWeatherItem)
         }
     }
-    currentTimeWeatherList.appendChild(currentWeatherList)
+    
+    return currentWeatherList
+}
+
+function addDataInCurrentWeather(data) {
+    const currentTimeWeatherList = document.querySelector('.current-time-weather__hourly')
+    const weatherData = showHourlyWeather(data)
+    currentTimeWeatherList.appendChild(weatherData)
 }
 
 const showWeeklyWeather = (data) => {
     const daylyArray = data.daily
+    weekWeatherList.innerHTML = ''
 
     daylyArray.forEach(day => {
         const dayEl = document.createElement('li')
@@ -159,3 +175,6 @@ if (navigator.geolocation) {
 else {
     console.log('Geolocation is not supported for this Browser/OS version yet.');
 }
+
+
+export { showHourlyWeather }

@@ -1,25 +1,21 @@
-.current-time-weather__list {
+.hourly-weather-list {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
 
-.current-time-weather__list li {
+.hourly-weather-list li {
   display: flex;
   flex-direction: column;
   padding: 0;
 }
 
-.current-time-weather__hours {
+.hourly-weather-list__hours {
   padding: 10px 20px;
   font-size: 24px;
   background-color: rgba($russian-green, 0.2);
 }
 
-.current-time-weather__hourly-temp {
+.hourly-weather-list__hourly-temp {
   padding: 10px 20px;
 }
-
-// @media (min-width: $desktop-width) {
-  
-// }
