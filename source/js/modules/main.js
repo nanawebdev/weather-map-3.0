@@ -89,7 +89,6 @@ const showCurrentWeather = (data) => {
 
 const showHourlyWeather = (data) => {
     const hourlyArray = data.hourly
-    console.log(hourlyArray)
     const currentWeatherList = document.createElement('ul')
     currentWeatherList.classList.add('hourly-weather-list')
 
@@ -168,6 +167,25 @@ if (navigator.geolocation) {
         var geoSuccess = function (position) {
             mapPin.setLatLng(L.latLng(position.coords.latitude, position.coords.longitude))
             map.setView(L.latLng(position.coords.latitude, position.coords.longitude), 13)
+
+            currentLatLng.lat = position.coords.latitude
+            currentLatLng.lng = position.coords.longitude
+
+            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${currentLatLng.lat}&lon=${currentLatLng.lng}&exclude={part}&units=metric&appid=${API_KEY}`)
+            .then((response) => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    throw response
+                }
+            })
+            .then((data) => {
+                showCurrentWeather(data)
+                showWeeklyWeather(data)
+                showHourlyWeather(data)
+                addDataInCurrentWeather(data)
+                addDataInPopup(data)
+            })
         };
         navigator.geolocation.getCurrentPosition(geoSuccess);
     }
